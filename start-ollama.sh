@@ -3,11 +3,11 @@
 set -e
 set -x
 
+ollama --version
+
 sudo cp ollama.service /etc/systemd/system/ollama.service
 
 sudo systemctl daemon-reload
 sudo systemctl start ollama
-
-echo "/tmp/ollama-run/bin/" >> $GITHUB_PATH
 
 sleep 2
