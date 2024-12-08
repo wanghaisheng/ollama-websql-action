@@ -12,7 +12,7 @@ runs:
       id: cache-ollama
       uses: actions/cache@v4
       with:
-        path: /ollama-run
+        path: /tmp/ollama-run
         key: ollama-${{ hashFiles('install-ollama.sh') }}
 
     - name: Install Ollama
@@ -25,5 +25,5 @@ runs:
       shell: bash
 
     - name: Pull Model
-      run: /ollama-run/bin/ollama bull ${{ inputs.model }}
+      run: /tmp/ollama-run/bin/ollama bull ${{ inputs.model }}
       shell: bash
