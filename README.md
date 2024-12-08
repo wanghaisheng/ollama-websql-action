@@ -1,1 +1,5 @@
-@types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vercel/ncc eslint eslint-plugin-jsonc eslint-plugin-prettier prettier prettier-eslint typescript
+# Ollama GitHub Action
+
+Run an ollama server with the model you provide
+
+Both the ollama install and the model are cached between runs.
