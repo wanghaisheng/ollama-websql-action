@@ -11,6 +11,6 @@ case "$ARCH" in
     *) error "Unsupported architecture: $ARCH" ;;
 esac
 
-mkdir -p ollama-run
 curl -L https://ollama.com/download/ollama-linux-${ARCH}.tgz -o ollama.tgz
+mkdir -p ollama-run
 tar -C ollama-run -xzf ollama.tgz
