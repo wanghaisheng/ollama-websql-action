@@ -3,8 +3,6 @@
 set -e
 set -x
 
-ollama --version
-
 sudo cp ollama.service /etc/systemd/system/ollama.service
 
 sudo systemctl daemon-reload
@@ -17,4 +15,6 @@ while true; do
     fi
 done
 
-sleep 2
+sleep 5
+sudo systemctl status ollama
+ollama --version
