@@ -3,9 +3,9 @@
 set -e
 set -x
 
-cp ollama.service /etc/systemd/system/ollama.service
+sudo cp ollama.service /etc/systemd/system/ollama.service
 
-systemctl daemon-reload
-systemctl start ollama
+sudo systemctl daemon-reload
+sudo systemctl start ollama
 
 sleep 2
