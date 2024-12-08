@@ -26,7 +26,7 @@ runs:
         key: ollama-models-${{ inputs.cache-key }}
 
     - if: steps.cache-ollama-install.outputs.cache-hit != 'true'
-      run: ./install-ollama.sh
+      run: install-ollama.sh
       shell: bash
 
     - run: echo $(pwd)/ollama-run/bin >> $GITHUB_PATH
