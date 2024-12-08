@@ -8,31 +8,29 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Cache Ollama Install
-      id: cache-ollama
+    - id: cache-ollama-install
       uses: actions/cache@v4
       with:
         path: ./ollama-run
-        key: ollama-${{ hashFiles('install-ollama.sh') }}-${{ inputs.model }}
+        key: ollama-${{ hashFiles('install-ollama.sh') }}
 
-    - name: Install Ollama
-      if: steps.cache-ollama.outputs.cache-hit != 'true'
+    - uses: actions/cache@v4
+      with:
+        path: ~/.ollama
+        key: ollama-models
+
+    - if: steps.cache-ollama-install.outputs.cache-hit != 'true'
       run: ./install-ollama.sh
       shell: bash
 
-    - name: Add ollama to path
-      run: echo $(pwd)/ollama-run/bin >> $GITHUB_PATH
+    - run: echo $(pwd)/ollama-run/bin >> $GITHUB_PATH
       shell: bash
 
-    - name: Start Ollama
-      run: ollama start &
+    - run: ollama start &
       shell: bash
 
-    - name: Ollama Version
-      run: ollama --version
+    - run: ollama --version
       shell: bash
 
-    - name: Pull Model
-      run: ollama pull ${{ inputs.model }}
-      if: steps.cache-ollama.outputs.cache-hit != 'true'
+    - run: ollama pull ${{ inputs.model }}
       shell: bash
