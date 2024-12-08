@@ -17,13 +17,10 @@ runs:
 
     - name: Install Ollama
       if: steps.cache-ollama.outputs.cache-hit != 'true'
-      run: install-ollama.sh
-      shell: bash
+      run: ./install-ollama.sh
 
     - name: Start Ollama
-      run: start-ollama.sh
-      shell: bash
+      run: ./start-ollama.sh
 
     - name: Pull Model
-      run: ollama bull ${{ inputs.model }}
-      shell: bash
+      run: /ollama-run/bin/ollama bull ${{ inputs.model }}
