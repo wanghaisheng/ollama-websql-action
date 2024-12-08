@@ -33,4 +33,4 @@ jobs:
 
       - uses: ./
         with:
-          model: llama3.2
+          model: qwen:0.5b

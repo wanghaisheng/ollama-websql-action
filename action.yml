@@ -6,6 +6,23 @@ inputs:
     description: The model to run
 
 runs:
-  using: node20
-  main: 'dist/index.js'
-#  post: 'dist/index.js'
+  using: composite
+  steps:
+    - name: Cache Ollama Install
+      id: cache-ollama
+      uses: actions/cache@v4
+      with:
+        path: /ollama-run
+
+    - name: Install Ollama
+      if: steps.cache-ollama.outputs.cache-hit != 'true'
+      run: install-ollama.sh
+      shell: bash
+
+    - name: Start Ollama
+      run: start-ollama.sh
+      shell: bash
+
+    - name: Pull Model
+      run: ollama bull ${{ inputs.model }}
+      shell: bash
