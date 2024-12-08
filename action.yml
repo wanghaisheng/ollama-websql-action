@@ -23,7 +23,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: ~/.ollama
-        key: ollama-models-${{ inputs.cache-key }}
+        key: ollama-models-${{ inputs.cache-key }}-${{ inputs.model }}
 
     - if: steps.cache-ollama-install.outputs.cache-hit != 'true'
       run: '${GITHUB_ACTION_PATH}/install-ollama.sh'
