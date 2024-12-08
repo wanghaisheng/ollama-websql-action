@@ -25,5 +25,5 @@ runs:
       shell: bash
 
     - name: Pull Model
-      run: /tmp/ollama-run/bin/ollama bull ${{ inputs.model }}
+      run: /tmp/ollama-run/bin/ollama pull ${{ inputs.model }}
       shell: bash

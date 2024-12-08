@@ -3,8 +3,9 @@
 set -e
 set -x
 
-curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd64.tgz
+ARCH=$(uname -m)
+curl -L https://ollama.com/download/ollama-linux-${ARCH}.tgz -o ollama.tgz
 mkdir /tmp/ollama-run
-tar -C /tmp/ollama-run -xzf ollama-linux-amd64.tgz
+tar -C /tmp/ollama-run -xzf ollama.tgz
 
 /tmp/ollama-run/bin/ollama --version
