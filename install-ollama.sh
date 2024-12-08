@@ -14,3 +14,4 @@ esac
 curl -L https://ollama.com/download/ollama-linux-${ARCH}.tgz -o ollama.tgz
 mkdir -p ollama-run
 tar -C ollama-run -xzf ollama.tgz
+rm ollama.tgz

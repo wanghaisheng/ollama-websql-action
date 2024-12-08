@@ -4,6 +4,11 @@ description: Run an ollama server with the model you provide
 inputs:
   model:
     description: The model to run
+    required: true
+  cache-key:
+    description: The cache key to use
+    required: false
+    default: ''
 
 runs:
   using: composite
@@ -12,12 +17,13 @@ runs:
       uses: actions/cache@v4
       with:
         path: ./ollama-run
-        key: ollama-${{ hashFiles('install-ollama.sh') }}
+        key: ollama-install-${{ inputs.cache-key }}-${{ hashFiles('install-ollama.sh') }}
 
-    - uses: actions/cache@v4
+    - id: cache-ollama-models
+      uses: actions/cache@v4
       with:
         path: ~/.ollama
-        key: ollama-models
+        key: ollama-models-${{ inputs.cache-key }}
 
     - if: steps.cache-ollama-install.outputs.cache-hit != 'true'
       run: ./install-ollama.sh
@@ -32,5 +38,6 @@ runs:
     - run: ollama --version
       shell: bash
 
-    - run: ollama pull ${{ inputs.model }}
+    - if: steps.cache-ollama-models.outputs.cache-hit != 'true'
+      run: ollama pull ${{ inputs.model }}
       shell: bash
