@@ -13,11 +13,8 @@ sudo systemctl start ollama
 while true; do
     sleep 2
     if sudo systemctl is-active --quiet "ollama.service"; then
-        echo "ollama.service is active "
         break
-    else
-        echo "ollama.service not active yet, waiting 2 seconds..."
     fi
 done
 
-sudo systemctl status ollama
+sleep 2
