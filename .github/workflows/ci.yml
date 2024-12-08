@@ -21,3 +21,4 @@ jobs:
 
       - run: ollama list
       - run: ollama run qwen:0.5b 'What is the capital of France?'
+      - run: ls -la
