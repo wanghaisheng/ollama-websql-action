@@ -36,7 +36,7 @@ runs:
       run: ollama pull ${{ inputs.model }}
       shell: bash
 
-  post:
-    - name: Stop Ollama
-      run: echo "Stopping Ollama" && pkill ollama
-      shell: bash
+#  post:
+#    - name: Stop Ollama
+#      run: echo "Stopping Ollama" && pkill ollama
+#      shell: bash
