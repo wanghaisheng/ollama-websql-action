@@ -17,7 +17,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: ./.ollama-install
-        key: ollama-install-${{ inputs.cache-key }}-${{ hashFiles('install-ollama.sh') }}
+        key: ollama-install-${{ inputs.cache-key }}-${{ hashFiles(format('{0}/install-ollama.sh', env.GITHUB_ACTION_PATH)) }}
 
     - id: cache-ollama-models
       uses: actions/cache@v4
