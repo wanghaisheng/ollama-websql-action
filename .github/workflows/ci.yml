@@ -15,8 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: pwd
-
       - uses: ./
         with:
           model: qwen:0.5b
+
+      - run: ollama list
+      - run: ollama run qwen:0.5b 'What is the capital of France?'
