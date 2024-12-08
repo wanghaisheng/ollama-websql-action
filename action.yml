@@ -1,0 +1,11 @@
+name: Run ollama server
+description: Run an ollama server with the model you provide
+
+inputs:
+  model:
+    description: The model to run
+
+runs:
+  using: node20
+  main: 'dist/index.js'
+#  post: 'dist/index.js'
