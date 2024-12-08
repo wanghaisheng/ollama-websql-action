@@ -20,9 +20,12 @@ runs:
       run: ./install-ollama.sh
       shell: bash
 
-    - name: Start Ollama
-      run: ./start-ollama.sh
+    - run: ollama start
       shell: bash
+
+#    - name: Start Ollama
+#      run: ./start-ollama.sh
+#      shell: bash
 
     - name: Pull Model
       run: ollama pull ${{ inputs.model }}
