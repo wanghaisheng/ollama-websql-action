@@ -1,6 +1,10 @@
 name: Run ollama server
 description: Run an ollama server with the model you provide
 
+branding:
+  icon: 'arrow-down'
+  color: 'orange'
+
 inputs:
   model:
     description: The model to run
