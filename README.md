@@ -1,3 +1,8 @@
+https://mp.weixin.qq.com/s/2H89vOHXWyF0n8G0N8kiiA
+
+
+
+
 # Ollama GitHub Action
 
 [![CI](https://github.com/samuelcolvin/ollama-action/actions/workflows/ci.yml/badge.svg)](https://github.com/samuelcolvin/ollama-action/actions/workflows/ci.yml)
